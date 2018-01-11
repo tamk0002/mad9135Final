@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const LOAD_DATA = "LOAD_DATA";
 export const LOAD_RESTAURANTS = "LOAD_RESTAURANTS";
-export const GET_RESTAURANT_DETAIL = "GET_RESTAURANT_DETAIL";
-export const BACK_TO_LIST = "BACK_TO_LIST";
+export const GET_DETAIL = "GET_RESTAURANT_DETAIL";
+export const BACK = "BACK_TO_LIST";
 
 export function loadData(){
     return {
@@ -20,14 +20,14 @@ export function loadRestaurants(data){
 
 export function getRestaurantDetail(id){
     return {
-        type: GET_RESTAURANT_DETAIL,
+        type: GET_DETAIL,
         id: id
     };
 }
 
 export function backToList(){
     return {
-        type: BACK_TO_LIST
+        type: BACK
     };
 }
 

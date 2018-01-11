@@ -4,7 +4,7 @@ import RestaurantList from "./List";
 import RestaurantDetail from "./Detail";
 import * as actions from "../actions";
 import {connect} from "react-redux";
-import {RESTAURANT_LIST, RESTAURANT_DETAIL, RESTAURANT_LOAD} from "../index";
+import {LIST, DETAIL, LOAD} from "../index";
 
 class Main extends Component {
     render() {
@@ -13,44 +13,36 @@ class Main extends Component {
         let body;
 
         switch (this.props.page) {
-
-            case RESTAURANT_DETAIL:
-
+            case DETAIL:
                 return_btn = (
                     <Content>
                         <Button full primary onPress={this.props.returnToList}>
-                            <Left>
-                                <Icon name ="arrow-back" />
-                            </Left>
-                            <Text>Back to List</Text>
+                            <Left><Icon name ="arrow-back" /></Left>
+                            <Text>BACK</Text>
                         </Button>
                     </Content>
                 );
-
                 body = <RestaurantDetail/>;
-
                 break;
 
-            case RESTAURANT_LIST:
-
+            case LIST:
                 body = (
                     <Content>
                         <Button full primary onPress={this.props.fetchData}>
-                            <Text>Find restaurants nearby...</Text>
+                            <Text>FIND RESTAURANTS NEARBY</Text>
                         </Button>
 
                         <RestaurantList/>
                     </Content>
                 );
-
                 break;
 
-            case RESTAURANT_LOAD:
+            case LOAD:
                 body = <Spinner color='blue'/>;
                 break;
 
             default:
-                body = <Text>Error loading the app</Text>;
+                body = <Text>ERROR LOADING APP</Text>;
 
         }
 
@@ -59,22 +51,19 @@ class Main extends Component {
                 <Header>
                     <Left/>
                     <Body>
-                    <Title>{this.props.selectedItem ? this.props.selectedItem.name :"Restaurant List"}</Title>
+                    <Title>{this.props.selectedItem ? this.props.selectedItem.name :"RESTAURANT LIST"}</Title>
                     </Body>
                     <Right/>
                 </Header>
+
                 <Content>
-
                     {return_btn}
-
                     {body}
-
                 </Content>
+
                 <Footer>
                     <FooterTab>
-                        <Button full>
-                            <Text>&copy; Christine Tamkican</Text>
-                        </Button>
+                        <Button full><Text>&copy; Christine Tamkican</Text></Button>
                     </FooterTab>
                 </Footer>
             </Container>

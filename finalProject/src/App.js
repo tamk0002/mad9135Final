@@ -2,16 +2,14 @@ import React from "react";
 import Main from "./components/Main";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducers from "./reducers";
-import {RESTAURANT_LIST} from "./index";
+import {LIST} from "./index";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 export default class App extends React.Component {
     render() {
         return (
-            <Provider store={store}>
-                <Main/>
-            </Provider>
+            <Provider store={store}><Main/></Provider>
         );
     }
 }
@@ -19,7 +17,7 @@ export default class App extends React.Component {
 let state = {
     restaurants: [],
     selectedItem: undefined,
-    page: RESTAURANT_LIST
+    page: LIST
 };
 
 let store = createStore(reducers, state, compose(

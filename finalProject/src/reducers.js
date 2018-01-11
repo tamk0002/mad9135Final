@@ -1,5 +1,5 @@
-import {LOAD_RESTAURANTS, GET_RESTAURANT_DETAIL, BACK_TO_LIST, LOAD_DATA} from "./actions";
-import {RESTAURANT_LIST, RESTAURANT_DETAIL, RESTAURANT_LOAD} from "./index";
+import {LOAD_RESTAURANTS, GET_DETAIL, BACK, LOAD_DATA} from "./actions";
+import {LIST, DETAIL, LOAD} from "./index";
 
 export default function reducers(state, action) {
     let newState = Object.assign({}, state);
@@ -7,27 +7,19 @@ export default function reducers(state, action) {
     switch(action.type) {
 
         case LOAD_DATA:
-
             newState = Object.assign({}, loadData(newState, action.id));
-
             break;
 
         case LOAD_RESTAURANTS:
-
             newState = Object.assign({},loadRestaurants(newState, action.restaurants));
-
             break;
 
-        case GET_RESTAURANT_DETAIL:
-
+        case GET_DETAIL:
             newState = Object.assign({}, getRestaurantDetail(newState, action.id));
-
             break;
 
-        case BACK_TO_LIST:
-
-            nnewState = Object.assign({}, backToList(newState));
-
+        case BACK:
+            newState = Object.assign({}, backToList(newState));
             break;
 
         default:
@@ -39,14 +31,14 @@ export default function reducers(state, action) {
 
 function loadData(newState){
 
-    newState.page = RESTAURANT_LOAD;
+    newState.page = LOAD;
 
     return newState;
 }
 
 function loadRestaurants(newState, restaurants){
 
-    newState.page = RESTAURANT_LIST;
+    newState.page = LIST;
 
     newState.restaurants = restaurants;
     return newState;
@@ -54,7 +46,7 @@ function loadRestaurants(newState, restaurants){
 
 function getRestaurantDetail(newState, id){
 
-    newState.page = RESTAURANT_DETAIL;
+    newState.page = DETAIL;
 
     restaurant = newState.restaurants.find(item => item.id == id ? true: false);
     newState.selectedItem = restaurant;
@@ -63,7 +55,7 @@ function getRestaurantDetail(newState, id){
 
 function backToList(newState){
 
-    newState.page = RESTAURANT_LIST;
+    newState.page = LIST;
 
     newState.selectedItem = undefined;
     return newState;

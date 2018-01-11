@@ -3,17 +3,16 @@ import {Container, Header, Content, Text, Title, Body, Card, CardItem} from "nat
 import * as actions from "../actions";
 import { connect } from "react-redux";
 
-class RestaurantDetail extends Component {
+class Detail extends Component {
 
     render() {
 
         return (
             <Container>
                 <Content>
+
                     <Card>
-                        <CardItem header>
-                            <Title>{this.props.item.name}</Title>
-                        </CardItem>
+                        <CardItem header><Title>{this.props.item.name}</Title></CardItem>
                         <CardItem>
                             <Body>
                             <Text>Phone: {this.props.item.phone}</Text>
@@ -23,6 +22,7 @@ class RestaurantDetail extends Component {
                             </Body>
                         </CardItem>
                     </Card>
+
                 </Content>
             </Container>
         )
@@ -41,4 +41,4 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);
